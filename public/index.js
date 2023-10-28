@@ -2,8 +2,7 @@ import DiceBox from "https://unpkg.com/@3d-dice/dice-box@1.0.10/dist/dice-box.es
 const { BoxControls, DisplayResults, DicePicker } = DiceUI;
 
 let Box = new DiceBox("#dice-box", {
-  assetPath: "assets/",
-  origin: "https://unpkg.com/@3d-dice/dice-box@1.0.10/dist/",
+  assetPath: "/public/assets/dice-box/",
   theme: "default",
   themeColor: "#feea03",
   offscreen: true,
@@ -15,7 +14,7 @@ Box.init().then(async (world) => {
   // console.log("Box is ready");
 
   const Controls = new BoxControls({
-    themes: ["default", "rust", "diceOfRolling", "gemstone"],
+    themes: ["default","blueGreenMetal","diceOfRolling","gemstone","gemstoneMarble","rock","rust","smooth","wooden"],
     themeColor: world.config.themeColor,
     onUpdate: (updates) => {
       Box.updateConfig(updates);
@@ -66,7 +65,7 @@ Box.init().then(async (world) => {
     // Vérification si l'utilisateur a cliqué sur les contrôles ou non
     let el = event.target;
     while (el) {
-      if (el.classList.contains('dg')) {
+      if (el.classList.contains('dg') || el.classList.contains('displayResults')) {
         // Si l'utilisateur a cliqué sur les contrôles, ne rien faire
         return;
       }
