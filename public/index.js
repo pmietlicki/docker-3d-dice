@@ -63,6 +63,15 @@ Box.init().then(async (world) => {
       // Si l'utilisateur a cliqué sur un bouton ou une image, ne rien faire
       return;
     }
+    // Vérification si l'utilisateur a cliqué sur les contrôles ou non
+    let el = event.target;
+    while (el) {
+      if (el.classList.contains('dg')) {
+        // Si l'utilisateur a cliqué sur les contrôles, ne rien faire
+        return;
+      }
+      el = el.parentElement;
+    }
     Box.clear();
     const outputDiv = document.querySelector('.output');
     const text = outputDiv.textContent.trim();
@@ -72,6 +81,4 @@ Box.init().then(async (world) => {
         Box.roll(diceNotations);
     }
   });
-
-  Box.roll(["4d20", "4d12", "4d10", "4d8", "4d6", "4d4"]);
 });
